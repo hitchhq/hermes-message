@@ -1,13 +1,19 @@
+'use strict';
+
 function HermesMessage (options) {
   const keys = Object.keys(options);
 
-  for (var i = keys.length-1; i; i--) {
+  for (let i = keys.length-1; i; i--) {
     this[keys[i]] = options[keys[i]];
   }
 }
 
-HermesMessage.prototype.cancel = function cancel () {
-  this.cancelled = true;
+HermesMessage.prototype.stop = function stop () {
+  this.stopped = true;
+};
+
+HermesMessage.prototype.cancelDelivery = function cancelDelivery () {
+  this.cancel_delivery = true;
 };
 
 HermesMessage.prototype.reply = function reply () {
@@ -19,7 +25,7 @@ HermesMessage.prototype.reply = function reply () {
     this.payload = arguments[1];
   }
 
-  this.cancel();
+  this.stop();
   this.send();
 };
 
