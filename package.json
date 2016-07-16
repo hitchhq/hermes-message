@@ -1,6 +1,6 @@
 {
   "name": "hermes-message",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Message wrapper for HermesJS",
   "main": "message.js",
   "repository": "https://github.com/hitchhq/hermes-message.git",
