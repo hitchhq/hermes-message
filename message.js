@@ -1,12 +1,21 @@
 'use strict';
 
-function HermesMessage (options) {
-  const keys = Object.keys(options);
+const util = require('util');
+const EventEmitter = require('events');
 
-  for (let i = keys.length-1; i; i--) {
+function HermesMessage (options) {
+  options = options || {};
+  if (options.stopped === undefined) options.stopped = false;
+  if (options.cancel_delivery === undefined) options.cancel_delivery = false;
+
+  const keys = Object.keys(options || {});
+
+  for (let i = 0; i < keys.length; i++) {
     this[keys[i]] = options[keys[i]];
   }
 }
+
+util.inherits(HermesMessage, EventEmitter);
 
 HermesMessage.prototype.stop = function stop () {
   this.stopped = true;
@@ -27,6 +36,10 @@ HermesMessage.prototype.reply = function reply () {
 
   this.stop();
   this.send();
+};
+
+HermesMessage.prototype.send = function () {
+  this.emit('send', this);
 };
 
 module.exports = HermesMessage;
