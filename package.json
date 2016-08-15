@@ -1,8 +1,11 @@
 {
   "name": "hermesjs-message",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Message wrapper for HermesJS",
   "main": "message.js",
+  "scripts": {
+    "test": "mocha test"
+  },
   "repository": "https://github.com/hitchhq/hermes-message.git",
   "bugs": "https://github.com/hitchhq/hermes-message/issues",
   "keywords": [
@@ -12,5 +15,9 @@
     "hermesjs"
   ],
   "author": "Francisco Mendez Vilas (fmvilas@gmail.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "should": "^9.0.2",
+    "sinon": "^1.17.4"
+  }
 }
